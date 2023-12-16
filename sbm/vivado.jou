@@ -1,0 +1,101 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Sun Sep  3 15:12:54 2023
+# Process ID: 292
+# Current directory: D:/Downloads/sbm
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10184 D:\Downloads\sbm\sbm.xpr
+# Log file: D:/Downloads/sbm/vivado.log
+# Journal file: D:/Downloads/sbm\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Downloads/sbm/sbm.xpr
+update_compile_order -fileset sources_1
+1
+launch_simulation
+source sbm_tb.tcl
+save_wave_config {D:/Downloads/sbm/sbm_tb_behav.wcfg}
+add_files -fileset sim_1 -norecurse D:/Downloads/sbm/sbm_tb_behav.wcfg
+set_property xsim.view D:/Downloads/sbm/sbm_tb_behav.wcfg [get_filesets sim_1]
+close_sim
+close_project
+create_project tsbm D:/Downloads/tsbm -part xc7a35tcpg236-1
+file mkdir D:/Downloads/tsbm/tsbm.srcs/sources_1/new
+close [ open D:/Downloads/tsbm/tsbm.srcs/sources_1/new/tsbm.v w ]
+add_files D:/Downloads/tsbm/tsbm.srcs/sources_1/new/tsbm.v
+update_compile_order -fileset sources_1
+file mkdir D:/Downloads/tsbm/tsbm.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open D:/Downloads/tsbm/tsbm.srcs/sim_1/new/tsbm_tb.v w ]
+add_files -fileset sim_1 D:/Downloads/tsbm/tsbm.srcs/sim_1/new/tsbm_tb.v
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+launch_simulation
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_simulation
+source tsbm_tb.tcl
+save_wave_config {D:/Downloads/tsbm/tsbm_tb_behav.wcfg}
+add_files -fileset sim_1 -norecurse D:/Downloads/tsbm/tsbm_tb_behav.wcfg
+set_property xsim.view D:/Downloads/tsbm/tsbm_tb_behav.wcfg [get_filesets sim_1]
+create_project efficient_sbm D:/Downloads/efficient_sbm -part xc7a35tcpg236-1
+file mkdir D:/Downloads/efficient_sbm/efficient_sbm.srcs/sources_1/new
+close [ open D:/Downloads/efficient_sbm/efficient_sbm.srcs/sources_1/new/efficient_sbm.v w ]
+add_files D:/Downloads/efficient_sbm/efficient_sbm.srcs/sources_1/new/efficient_sbm.v
+update_compile_order -fileset sources_1
+file mkdir D:/Downloads/efficient_sbm/efficient_sbm.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open D:/Downloads/efficient_sbm/efficient_sbm.srcs/sim_1/new/efficient_sbm_tb.v w ]
+add_files -fileset sim_1 D:/Downloads/efficient_sbm/efficient_sbm.srcs/sim_1/new/efficient_sbm_tb.v
+update_compile_order -fileset sim_1
+launch_simulation
+source efficient_sbm_tb.tcl
+update_compile_order -fileset sim_1
+save_wave_config {D:/Downloads/efficient_sbm/efficient_sbm_tb_behav.wcfg}
+add_files -fileset sim_1 -norecurse D:/Downloads/efficient_sbm/efficient_sbm_tb_behav.wcfg
+set_property xsim.view D:/Downloads/efficient_sbm/efficient_sbm_tb_behav.wcfg [get_filesets sim_1]
+close_sim
+launch_simulation
+open_wave_config D:/Downloads/efficient_sbm/efficient_sbm_tb_behav.wcfg
+source efficient_sbm_tb.tcl
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+open_run impl_1
+current_project tsbm
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+open_run impl_1
+current_project efficient_sbm
+close_sim
+launch_simulation
+open_wave_config D:/Downloads/efficient_sbm/efficient_sbm_tb_behav.wcfg
+source efficient_sbm_tb.tcl
+open_project D:/Downloads/sbm/sbm.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config D:/Downloads/sbm/sbm_tb_behav.wcfg
+source sbm_tb.tcl
+current_project efficient_sbm
+current_sim simulation_5
+close_sim
+launch_simulation
+open_wave_config D:/Downloads/efficient_sbm/efficient_sbm_tb_behav.wcfg
+source efficient_sbm_tb.tcl
+synth_design -rtl -name rtl_1
+close_sim
+launch_simulation
+open_wave_config D:/Downloads/efficient_sbm/efficient_sbm_tb_behav.wcfg
+source efficient_sbm_tb.tcl
+current_project tsbm
+current_sim simulation_2
+close_sim
+close_project
+current_project efficient_sbm
+current_sim simulation_8
+close_sim
+close_project
+close_sim
